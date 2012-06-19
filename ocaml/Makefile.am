@@ -36,6 +36,10 @@ OCAML_PACKAGE=Redland
 
 SWIG_OUTPUTS=$(OCAML_PACKAGE)_wrap.c $(OCAML_PACKAGE).mli $(OCAML_PACKAGE).ml
 
+OCAMLDOC_DIR=ocamldoc
+OCAMLDOC_STAMP=ocamldoc-stamp
+
+
 CAMLRDF_LIB_NAME=camlrdf
 
 ocamldir=$(srcdir)
@@ -126,3 +130,10 @@ check: $(CAMLRDF_LIB_NAME).cmxa
 	$(OCAMLFIND) ocamlopt -o test.opt $(CAMLRDF_LIB_NAME).cmxa test.ml $(LIBRDF_LINKOPTS)
 	$(OCAMLFIND) ocamlopt -o example.opt $(CAMLRDF_LIB_NAME).cmxa example.ml $(LIBRDF_LINKOPTS)
 	$(srcdir)/test.opt #&& $(srcdir)/example.opt
+
+docs: $(OCAMLDOC_STAMP)
+$(OCAMLDOC_STAMP):
+	mkdir -p $(OCAMLDOC_DIR); ocamldoc -html rdf.mli -d $(OCAMLDOC_DIR) && touch $@
+
+clean-local:
+	rm -rf $(OCAMLDOC_DIR) $(OCAMLDOC_STAMP)

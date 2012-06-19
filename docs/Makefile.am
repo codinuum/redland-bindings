@@ -22,9 +22,9 @@
 # 
 
 EXTRA_DIST=README.html README \
-perl.html python.html ruby.html php.html \
+perl.html python.html ruby.html php.html ocaml.html \
 fix-pod-xhtml fix-python-xhtml fix-rdoc-xhtml \
-pod pydoc rdoc
+pod pydoc rdoc ocamldoc
 
 POD_MODULES=RDF/Redland RDF/Redland/Iterator RDF/Redland/Model RDF/Redland/Node RDF/Redland/Parser RDF/Redland/Query RDF/Redland/QueryResults RDF/Redland/RSS RDF/Redland/Serializer RDF/Redland/Statement RDF/Redland/Storage RDF/Redland/Stream RDF/Redland/URI RDF/Redland/BlankNode RDF/Redland/URINode RDF/Redland/LiteralNode RDF/Redland/XMLLiteralNode
 
@@ -59,8 +59,24 @@ rdoc/fr_method_index.html \
 rdoc/index.html
 RUBY_EXTRA_RDOC_FILES=rdoc/rdoc-style.css
 
+OCAML_MODULES=Storage FileStorage HashStorage MemoryStorage Iterator Model \
+Parser NTriplesParser TurtleParser Node Statement Stream Uri QueryResults \
+Query RDQLQuery SPARQLQuery Serializer RDFXMLSerializer NTriplesSerializer
+
+OCAML_OTHER_HTML_FILES=Rdf type_Rdf index index_attributes \
+index_class_types index_classes index_exceptions index_methods \
+index_module_types index_modules index_types index_values 
+
+OCAML_HTML_OCAMLDOC_FILES=$(OCAML_MODULES:%=ocamldoc/Rdf.%.html) \
+$(OCAML_MODULES:%=ocamldoc/Rdf.%.c-c.html) \
+$(OCAML_MODULES:%=ocamldoc/type_Rdf.%.html) \
+$(OCAML_MODULES:%=ocamldoc/type_Rdf.%.c.html) \
+$(OCAML_OTHER_HTML_FILES:%=ocamldoc/%.html)
+
+OCAML_EXTRA_OCAMLDOC_FILES=ocamldoc/style.css
+
 CLEANFILES=README
-MAINTAINERCLEANFILES=pod pydoc rdoc-dirs-stamp
+MAINTAINERCLEANFILES=pod pydoc rdoc-dirs-stamp ocamldoc ocamldoc-dirs-stamp
 
 PERL=perl
 
@@ -75,6 +91,8 @@ pod: $(PERL_HTML_POD_FILES)
 pydoc: $(PYTHON_HTML_PYDOC_FILES)
 
 rdoc: $(RUBY_HTML_RDOC_FILES) $(RUBY_EXTRA_RDOC_FILES)
+
+ocamldoc: $(OCAML_HTML_OCAMLDOC_FILES) $(OCAML_EXTRA_OCAMLDOC_FILES)
 
 .html.txt:
 	$(LYNX) $(LYNXARGS) $< > $@
@@ -101,6 +119,15 @@ rdoc: $(RUBY_HTML_RDOC_FILES) $(RUBY_EXTRA_RDOC_FILES)
 @MAINT@	-tidy -asxml -wrap 1000 $(srcdir)/../ruby/$@ 2>/dev/null | $(PERL) $(srcdir)/fix-rdoc-xhtml $@
 @MAINT@$(RUBY_EXTRA_RDOC_FILES): $(srcdir)/../ruby/rdoc-stamp rdoc-dirs-stamp
 @MAINT@	$(INSTALL_DATA) $(srcdir)/../ruby/$@ $@
+@MAINT@
+@MAINT@$(srcdir)/../ocaml/ocamldoc-stamp:
+@MAINT@	cd $(srcdir)/../ocaml && make docs
+@MAINT@ocamldoc-dirs-stamp:
+@MAINT@	mkdir -p ocamldoc && touch $@
+@MAINT@$(OCAML_HTML_OCAMLDOC_FILES): ocamldoc/%.html: $(srcdir)/../ocaml/ocamldoc-stamp ocamldoc-dirs-stamp
+@MAINT@	$(INSTALL_DATA) $(srcdir)/../ocaml/$@ $@
+@MAINT@$(OCAML_EXTRA_OCAMLDOC_FILES): $(srcdir)/../ocaml/ocamldoc-stamp ocamldoc-dirs-stamp
+@MAINT@	$(INSTALL_DATA) $(srcdir)/../ocaml/$@ $@
 
 
 clean-local:
