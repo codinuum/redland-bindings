@@ -52,6 +52,7 @@ AC_PROG_LIBTOOL
 # Find a tar command for 'make dist'
 AC_CHECK_PROGS(TAR, gnutar gtar tar)
 
+AC_CHECK_PROGS(OCAMLFIND, ocamlfind)
 AC_CHECK_PROGS(LUA, lua)
 AC_CHECK_PROGS(PYTHON, python)
 AC_CHECK_PROGS(PERL, perl)
@@ -119,6 +120,44 @@ languages_available=
 
 
 dnl Checks for languages
+
+AC_ARG_WITH(ocaml, [  --with-ocaml(=OCAMLFIND)      Enable the OCaml interface], with_ocaml="$withval", with_ocaml="no")
+AC_ARG_VAR(OCAML_STDLIB, [location of ocaml standard libraries])
+
+AC_MSG_CHECKING(Enable OCaml API)
+if test "X$with_ocaml" != Xno ; then
+  if test "X$with_ocaml" != Xyes; then
+    OCAMLFIND=$with_ocaml
+  fi
+  with_ocaml=yes
+fi
+
+OCAML_VERSION=`$OCAMLFIND ocamlc -version`
+
+if test "X$OCAML_VERSION" != X; then
+  languages_available="$languages_available ocaml($OCAML_VERSION)"
+  if test $with_ocaml = yes; then
+    languages="$languages ocaml"
+  fi
+fi
+
+AC_MSG_RESULT($with_ocaml $OCAML_VERSION)
+AC_SUBST(OCAML_VERSION)
+
+if test "X$OCAMLFIND" != X; then
+
+  AC_MSG_CHECKING(OCaml standard libraries)
+  ocaml_stdlib_dir=`$OCAMLFIND query stdlib`
+
+  if test "X$OCAML_STDLIB" != X; then
+    AC_MSG_RESULT(using user libraries: $OCAML_STDLIB)
+  else
+    OCAML_STDLIB="${ocaml_stdlib_dir}"
+    AC_MSG_RESULT($OCAML_STDLIB)
+  fi
+
+fi
+
 
 AC_ARG_WITH(lua, [  --with-lua(=LUA)      Enable the Lua interface], with_lua="$withval", with_lua="no")
 AC_MSG_CHECKING(Enable LUA API)
@@ -590,6 +629,7 @@ ruby/lib/Makefile
 ruby/lib/rdf/Makefile
 ruby/lib/rdf/redland/Makefile
 ruby/lib/rdf/redland/schemas/Makefile
+ocaml/Makefile
 data/Makefile
 ])
 AC_CONFIG_FILES([redland-bindings.spec])
