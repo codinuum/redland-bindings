@@ -1,0 +1,7 @@
+name="camlrdf"
+version="0.1"
+description="Redland RDF library"
+requires=""
+archive(byte)="camlrdf.cma"
+archive(native)="camlrdf.cmxa"
+linkopts = "LINKOPTS"

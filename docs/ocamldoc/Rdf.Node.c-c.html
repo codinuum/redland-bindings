@@ -1,0 +1,23 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link rel="Up" href="Rdf.Node.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of class methods" rel=Appendix href="index_methods.html">
+<link title="Index of classes" rel=Appendix href="index_classes.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Rdf" rel="Chapter" href="Rdf.html"><title>Rdf.Node.c</title>
+</head>
+<body>
+<div class="navbar">&nbsp;<a href="Rdf.Node.html">Up</a>
+&nbsp;</div>
+<center><h1>Class <a href="type_Rdf.Node.c.html">Rdf.Node.c</a></h1></center>
+<br>
+<pre><span name="TYPEc"><span class="keyword">class</span> c</span> : <code class="type">?uri_string:string -> ?uri:<a href="Rdf.Uri.c-c.html">Rdf.Uri.c</a> -> ?literal:string -> ?datatype:<a href="Rdf.Uri.c-c.html">Rdf.Uri.c</a> -> ?is_wf_xml:int -> ?xml_language:string -> ?blank:string -> unit -> </code><code class="code">object</code> <a href="Rdf.Node.c-c.html">..</a> <code class="code">end</code></pre>Redland Node class.<br>
+<hr width="100%">
+<pre><span id="METHODrepr"><span class="keyword">method</span> repr</span> : <code class="type"><a href="Rdf.html#TYPErepr">Rdf.repr</a></code></pre><pre><span id="METHODis_valid"><span class="keyword">method</span> is_valid</span> : <code class="type">bool</code></pre><pre><span id="METHODget_type"><span class="keyword">method</span> get_type</span> : <code class="type"><a href="Rdf.html#TYPEnode_type">Rdf.node_type</a></code></pre><pre><span id="METHODis_resource"><span class="keyword">method</span> is_resource</span> : <code class="type">bool</code></pre><pre><span id="METHODis_literal"><span class="keyword">method</span> is_literal</span> : <code class="type">bool</code></pre><pre><span id="METHODis_blank"><span class="keyword">method</span> is_blank</span> : <code class="type">bool</code></pre><pre><span id="METHODequals"><span class="keyword">method</span> equals</span> : <code class="type">(< clone : 'b; equals : 'a; get_blank_identifier : string;<br>          get_literal_value : <a href="Rdf.html#TYPEliteral_value">Rdf.literal_value</a>; get_type : <a href="Rdf.html#TYPEnode_type">Rdf.node_type</a>;<br>          get_uri : <a href="Rdf.Uri.c-c.html">Rdf.Uri.c</a>; is_blank : bool; is_literal : bool;<br>          is_resource : bool; is_valid : bool; repr : <a href="Rdf.html#TYPErepr">Rdf.repr</a>; to_string : <br>          string; .. ><br>        as 'b) -><br>       bool as 'a</code></pre><pre><span id="METHODget_uri"><span class="keyword">method</span> get_uri</span> : <code class="type"><a href="Rdf.Uri.c-c.html">Rdf.Uri.c</a></code></pre><pre><span id="METHODget_literal_value"><span class="keyword">method</span> get_literal_value</span> : <code class="type"><a href="Rdf.html#TYPEliteral_value">Rdf.literal_value</a></code></pre><pre><span id="METHODget_blank_identifier"><span class="keyword">method</span> get_blank_identifier</span> : <code class="type">string</code></pre><pre><span id="METHODto_string"><span class="keyword">method</span> to_string</span> : <code class="type">string</code></pre><pre><span id="METHODclone"><span class="keyword">method</span> clone</span> : <code class="type">'b</code></pre></body></html>

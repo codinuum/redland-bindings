@@ -1,0 +1,152 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of class methods" rel=Appendix href="index_methods.html">
+<link title="Index of classes" rel=Appendix href="index_classes.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Rdf" rel="Chapter" href="Rdf.html"><title>Rdf</title>
+</head>
+<body>
+<div class="navbar">&nbsp;<a href="index.html">Up</a>
+&nbsp;</div>
+<center><h1>Module <a href="type_Rdf.html">Rdf</a></h1></center>
+<br>
+<pre><span class="keyword">module</span> Rdf: <code class="code">sig</code> <a href="Rdf.html">..</a> <code class="code">end</code></pre>A OCaml interface to the Redland RDF library.
+<p>
+
+   See http://librdf.org/ for details of the Redland library.<br>
+<hr width="100%">
+<pre><span id="TYPErepr"><span class="keyword">type</span> <code class="type"></code>repr</span> </pre>
+<div class="info">
+Internal representation of Redland objects.<br>
+</div>
+
+<pre><span id="EXCEPTIONNodeTypeError"><span class="keyword">exception</span> NodeTypeError</span> <span class="keyword">of</span> <code class="type">string</code></pre>
+<br><code><span id="TYPEnode_type"><span class="keyword">type</span> <code class="type"></code>node_type</span> = </code><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">T_unknown</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">T_resource</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">T_literal</span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span class="constructor">T_blank</span></code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" >Type of RDF node. A node may be a resource (a URI), a literal, or a blank node.</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr></table>
+
+
+<pre><span class="keyword">module</span> <a href="Rdf.Uri.html">Uri</a>: <code class="code">sig</code> <a href="Rdf.Uri.html">..</a> <code class="code">end</code></pre><div class="info">
+URI (Uniform Resource Identifier).
+</div>
+<br><code><span id="TYPEliteral_value"><span class="keyword">type</span> <code class="type"></code>literal_value</span> = {</code><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code>lv_string&nbsp;: <code class="type">string</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code>lv_language&nbsp;: <code class="type">string</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code>lv_datatype&nbsp;: <code class="type"><a href="Rdf.Uri.c-c.html">Uri.c</a></code>;</code></td>
+
+</tr></table>
+}
+
+<div class="info">
+RDF literal.<br>
+</div>
+
+<pre><span class="keyword">module</span> <a href="Rdf.Node.html">Node</a>: <code class="code">sig</code> <a href="Rdf.Node.html">..</a> <code class="code">end</code></pre><div class="info">
+RDF node.
+</div>
+<pre><span class="keyword">module</span> <a href="Rdf.Statement.html">Statement</a>: <code class="code">sig</code> <a href="Rdf.Statement.html">..</a> <code class="code">end</code></pre><div class="info">
+RDF statements (triples).
+</div>
+<pre><span class="keyword">module</span> <a href="Rdf.Stream.html">Stream</a>: <code class="code">sig</code> <a href="Rdf.Stream.html">..</a> <code class="code">end</code></pre><div class="info">
+Provides sequences of statements from parsers and queries.
+</div>
+<pre><span class="keyword">module</span> <a href="Rdf.Iterator.html">Iterator</a>: <code class="code">sig</code> <a href="Rdf.Iterator.html">..</a> <code class="code">end</code></pre><div class="info">
+Enumerates nodes from queries.
+</div>
+<pre><span class="keyword">module</span> <a href="Rdf.Storage.html">Storage</a>: <code class="code">sig</code> <a href="Rdf.Storage.html">..</a> <code class="code">end</code></pre><div class="info">
+Storage for models either persistent or in-memory.
+</div>
+<pre><span class="keyword">module</span> <a href="Rdf.MemoryStorage.html">MemoryStorage</a>: <code class="code">sig</code> <a href="Rdf.MemoryStorage.html">..</a> <code class="code">end</code></pre><div class="info">
+In-memory storage.
+</div>
+<pre><span class="keyword">module</span> <a href="Rdf.HashStorage.html">HashStorage</a>: <code class="code">sig</code> <a href="Rdf.HashStorage.html">..</a> <code class="code">end</code></pre><div class="info">
+Hash storage.
+</div>
+<pre><span class="keyword">module</span> <a href="Rdf.FileStorage.html">FileStorage</a>: <code class="code">sig</code> <a href="Rdf.FileStorage.html">..</a> <code class="code">end</code></pre><div class="info">
+File storage.
+</div>
+<pre><span class="keyword">module</span> <a href="Rdf.QueryResults.html">QueryResults</a>: <code class="code">sig</code> <a href="Rdf.QueryResults.html">..</a> <code class="code">end</code></pre><div class="info">
+Results of querying a model giving either variable bindings 
+    with node values or stream of statements.
+</div>
+<pre><span class="keyword">module</span> <a href="Rdf.Query.html">Query</a>: <code class="code">sig</code> <a href="Rdf.Query.html">..</a> <code class="code">end</code></pre><div class="info">
+Queries a model delivering a <code class="code">QueryResults.c</code> object.
+</div>
+<pre><span class="keyword">module</span> <a href="Rdf.Model.html">Model</a>: <code class="code">sig</code> <a href="Rdf.Model.html">..</a> <code class="code">end</code></pre><div class="info">
+Set of statements usually held in a <code class="code">Storage.c</code> object.
+</div>
+<pre><span class="keyword">module</span> <a href="Rdf.RDQLQuery.html">RDQLQuery</a>: <code class="code">sig</code> <a href="Rdf.RDQLQuery.html">..</a> <code class="code">end</code></pre><div class="info">
+RDQL query.
+</div>
+<pre><span class="keyword">module</span> <a href="Rdf.SPARQLQuery.html">SPARQLQuery</a>: <code class="code">sig</code> <a href="Rdf.SPARQLQuery.html">..</a> <code class="code">end</code></pre><div class="info">
+SPARQL query.
+</div>
+<pre><span class="keyword">module</span> <a href="Rdf.Parser.html">Parser</a>: <code class="code">sig</code> <a href="Rdf.Parser.html">..</a> <code class="code">end</code></pre><div class="info">
+Parses RDF data to deliver stream of statements.
+</div>
+<pre><span class="keyword">module</span> <a href="Rdf.NTriplesParser.html">NTriplesParser</a>: <code class="code">sig</code> <a href="Rdf.NTriplesParser.html">..</a> <code class="code">end</code></pre><div class="info">
+N-Triples parser.
+</div>
+<pre><span class="keyword">module</span> <a href="Rdf.TurtleParser.html">TurtleParser</a>: <code class="code">sig</code> <a href="Rdf.TurtleParser.html">..</a> <code class="code">end</code></pre><div class="info">
+Turtle parser.
+</div>
+<pre><span class="keyword">module</span> <a href="Rdf.Serializer.html">Serializer</a>: <code class="code">sig</code> <a href="Rdf.Serializer.html">..</a> <code class="code">end</code></pre><div class="info">
+Serializes a model in a format such as RDF/XML.
+</div>
+<pre><span class="keyword">module</span> <a href="Rdf.RDFXMLSerializer.html">RDFXMLSerializer</a>: <code class="code">sig</code> <a href="Rdf.RDFXMLSerializer.html">..</a> <code class="code">end</code></pre><div class="info">
+RDF/XML serializer.
+</div>
+<pre><span class="keyword">module</span> <a href="Rdf.NTriplesSerializer.html">NTriplesSerializer</a>: <code class="code">sig</code> <a href="Rdf.NTriplesSerializer.html">..</a> <code class="code">end</code></pre><div class="info">
+N-Triples serializer.
+</div>
+</body></html>
