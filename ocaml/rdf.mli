@@ -45,9 +45,9 @@
  *
  *)
 
-(** A OCaml interface to the Redland RDF library.
+(** A OCaml interface to Redland RDF libraries.
    
-   See http://librdf.org/ for details of the Redland library.
+   See {{:http://librdf.org/}here} for details of the Redland libraries.
  *)
 
 type repr
